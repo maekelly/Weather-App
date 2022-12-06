@@ -1,7 +1,6 @@
 //Changing the displayed time and date to show current time and day
 
 let now = new Date();
-
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -12,7 +11,7 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-let timeNow = hours + ":" + minutes + " GMT";
+let timeNow = `${hours}:${minutes} GMT`;
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let day = days[now.getDay()];
@@ -27,12 +26,9 @@ function updateCity(event) {
 
   if (input.value) {
     function getCityInfo(response) {
-      let apiTemp = Math.round(`${response.data.main.temp}`);
       cityShown.innerHTML = `${input.value}`;
-      currentTemp.innerHTML = `${apiTemp}`;
-      let weatherDescription = `${response.data.weather[0].description}`;
-      weatherType.innerHTML = `${weatherDescription}`;
-      console.log(apiTemp);
+      currentTemp.innerHTML = Math.round(`${response.data.main.temp}`);
+      weatherType.innerHTML = `${response.data.weather[0].description}`;
     }
   } else {
     alert("Please type a city, I'm not a mind reader.");

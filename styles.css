@@ -17,18 +17,22 @@ input {
 footer {
   text-align: center;
 }
-.card,
-.searchglass {
-  background-color: #ffedff;
+body {
+  background: #ffedff;
 }
+
 .searchbar {
   right: 0%;
   border: 1px;
   border-color: black;
+  margin: 0px 5px;
 }
 .searchglass {
   border: none;
-  background-color: none;
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  bottom: 28px;
+  left: 150px;
 }
 .container {
   margin-top: 20px;
@@ -64,4 +68,12 @@ footer {
 .currentCity,
 #weatherType {
   text-transform: capitalize;
+}
+#currentButton {
+  border-radius: 4px;
+  display: inline;
+  background: #ff9776;
+  padding: 2px 5px;
+  margin: 1px 5px;
+  border: none;
 }

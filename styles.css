@@ -13,6 +13,10 @@ h5 {
 input {
   vertical-align: top;
 }
+
+footer {
+  text-align: center;
+}
 .card,
 .searchglass {
   background-color: #ffedff;

@@ -20,7 +20,6 @@ let currentDateTime = document.querySelector(".currentDateTime");
 currentDateTime.innerHTML = `${day} ${timeNow}`;
 
 //Changing the city to show searched city
-//class of the city element to change is ".currentCity"
 function updateCity(event) {
   event.preventDefault();
 
@@ -58,6 +57,27 @@ function ediTempSet(response) {
 let apiUrlEdi = `https://api.openweathermap.org/data/2.5/weather?q=edinburgh&appid=${apiKey}&units=metric`;
 axios.get(apiUrlEdi).then(ediTempSet);
 
+function handlePosition() {
+  navigator.geolocation.getCurrentPosition(currentClick);
+}
+
+function currentClick(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+
+  let currentBtnApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  console.log(currentBtnApiUrl);
+  axios.get(currentBtnApiUrl).then(currentWeather);
+}
+
+function currentWeather(response) {
+  cityShown.innerHTML = response.data.name;
+  currentTemp.innerHTML = Math.round(`${response.data.main.temp}`);
+  weatherType.innerHTML = response.data.weather[0].description;
+}
+
+let currentBtn = document.querySelector("#currentButton");
+currentBtn.addEventListener("click", handlePosition);
 // BONUS
 // Add a "Current" button that resets all of the above to the CURRENT location
 
